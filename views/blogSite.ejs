@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="title">
+            <a href="/">Blog of moon</a>
+            <p>here are all badr's blogs</p>
+        </div>
+        <ul>
+            <li><a href="/">Blogs</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs/create">new Blog</a></li>
+        </ul>
+    </nav>
+
+    <div class="blogSite content">
+        <h2><%= blog.title %></h2>
+        <div class="content">
+            <p><%= blog.body %></p>
+        </div>
+        <a class="delete" href="" data-doc="<%= blog._id %>">delete</a>
+    </div>
+
+    <script>
+        const trash = document.querySelector('a.delete');
+        trash.addEventListener('click',(el) => {
+            const endpoint = `/blogs/${trash.dataset.doc}`;
+
+            fetch(endpoint,{
+                method:'DELETE'
+            })
+            .then((response)=> response.json())
+            .then((data)=> window.location.href = data.redirect)
+            .catch((err)=>console.log(err))
+        })
+    </script>
+</body>
+</html>

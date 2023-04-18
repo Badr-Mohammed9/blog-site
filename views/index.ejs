@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <% let name = 'badr' %>
+    
+    <nav>
+        <div class="title">
+            <h1><a href="/">Blog of moon</a>            </h1>
+            <p>here are all <%= name %>'s blogs</p>
+        </div>
+        <ul>
+            <li><a href="/">Blogs</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs/create">new Blog</a></li>
+        </ul>
+    </nav>
+    <div class="blogs content">
+        <h2>all blogs</h2>
+        <% if (blogs.length>0) { %>
+            <% blogs.forEach(blog => { %>
+                <a class="single" href="/blogs/<%= blog._id %>">
+                    <h3 class="blogTitle"><%= blog.title %></h3>
+                    <p class="snippet"><%= blog.snippet %></p>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <h2>no blogs</h2>
+         <% } %>
+    </div>
+</body>
+</html>
