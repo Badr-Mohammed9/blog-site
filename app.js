@@ -5,7 +5,7 @@ const { render } = require('ejs');
 const port = 5001;
 const router = require('./blogRouter')
 //database
-const dbURI = 'mongodb+srv://admin:12345123@nodeexpressproject.mhtsqil.mongodb.net/store?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://username:password@nodeexpressproject.mhtsqil.mongodb.net/store?retryWrites=true&w=majority'
 mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true,})
 .then((result)=> {
     console.log("conncted to databse");
